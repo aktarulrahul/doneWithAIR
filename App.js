@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { Switch, Text, TextInput, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Button, Image, Text } from "react-native";
+
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
+
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -8,6 +15,7 @@ import MessagesScreen from "./app/screens/MessagesScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
 import LoginScreen from "./app/screens/LoginScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 import AppButton from "./app/components/AppButton";
 import Card from "./app/components/Card";
@@ -16,7 +24,13 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
-import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AuthNavigation from "./app/navigation/AuthNavigation";
+
+import NavigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 const categories = [
   { label: "Furniture", value: 1 },
@@ -25,8 +39,9 @@ const categories = [
 ];
 
 export default function App() {
-  // const [typeName, setTypeName] = useState("");
-  // const [isNew, setIsNew] = useState(false);
-  // const [category, setCategory] = useState(categories[0]);
-  return <ListingEditScreen />;
+  return (
+    <NavigationContainer theme={NavigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
+  );
 }
